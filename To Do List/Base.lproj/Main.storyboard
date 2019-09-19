@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8gR-S7-2WG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--To Do List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="To_Do_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,6 +30,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="iff-Gq-orR" kind="show" identifier="Edititem" id="LfC-qd-wpU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -37,13 +40,116 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="To Do List" id="y0k-jr-stc">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="Ozq-cu-Md4"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FjY-jP-J5b">
+                            <connections>
+                                <segue destination="ibr-fS-QHB" kind="presentation" identifier="Additem" id="rY6-M7-9oI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="gXf-u5-Hy4" id="Ba9-Jd-l2N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="880.79999999999995" y="116.49175412293854"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="CvZ-Cw-kf9">
+            <objects>
+                <viewController id="iff-Gq-orR" customClass="DetailViewController" customModule="To_Do_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cKa-pr-2LF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Do Item:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9c-4s-RS4">
+                                <rect key="frame" x="16" y="202" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="DsJ-6G-0X4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter To Do Item Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dll-lI-Av4">
+                                <rect key="frame" x="16" y="231" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="d9c-4s-RS4" firstAttribute="top" secondItem="rN8-gA-fag" secondAttribute="top" constant="138" id="A4R-J5-Sn0"/>
+                            <constraint firstItem="dll-lI-Av4" firstAttribute="top" secondItem="d9c-4s-RS4" secondAttribute="bottom" constant="8" symbolic="YES" id="G0R-G3-InO"/>
+                            <constraint firstItem="d9c-4s-RS4" firstAttribute="leading" secondItem="dll-lI-Av4" secondAttribute="leading" id="c8e-Pc-lxo"/>
+                            <constraint firstItem="d9c-4s-RS4" firstAttribute="leading" secondItem="cKa-pr-2LF" secondAttribute="leadingMargin" id="dPq-Mp-B7i"/>
+                            <constraint firstItem="d9c-4s-RS4" firstAttribute="trailing" secondItem="dll-lI-Av4" secondAttribute="trailing" id="ol9-8d-mgx"/>
+                            <constraint firstItem="d9c-4s-RS4" firstAttribute="trailing" secondItem="cKa-pr-2LF" secondAttribute="trailingMargin" id="ora-gp-aGj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rN8-gA-fag"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gFw-n0-Lz4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fhj-pj-FD2">
+                            <connections>
+                                <action selector="cancelPressed:" destination="iff-Gq-orR" id="KpR-yn-Zcs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="h0A-dN-BQ0">
+                            <connections>
+                                <segue destination="Ggk-0C-LBu" kind="unwind" identifier="UnwindFromSave" unwindAction="unwindFromDetailViewControllerWithSegue:" id="7AS-i7-EOs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="toDoField" destination="dll-lI-Av4" id="xmb-Yv-vgC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yJ2-DG-JAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ggk-0C-LBu" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3244" y="115.59220389805098"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="J9S-zI-8Bi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8gR-S7-2WG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c3Q-oT-SH2">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="w4A-VA-Z6e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Mn-hB-rAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="-58.399999999999999" y="116.49175412293854"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A2m-vV-bnG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ibr-fS-QHB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e3E-uz-gYj">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iff-Gq-orR" kind="relationship" relationship="rootViewController" id="SsX-6o-kvL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9qr-q1-2jA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2060" y="475"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="LfC-qd-wpU"/>
+    </inferredMetricsTieBreakers>
 </document>
