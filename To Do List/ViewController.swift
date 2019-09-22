@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var addBarButton: UIBarButtonItem!
     
     var toDoArray = ["Learn swift", "Build apps", "Email professor"]
     
@@ -42,6 +44,20 @@ class ViewController: UIViewController {
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
     }
+    
+    @IBAction func editBarButtonPressed(_ sender: Any) {
+        if tableView.isEditing {
+            tableView.setEditing(false, animated: true)
+            addBarButton.isEnabled = true
+            editButton.title = "Edit"
+        } else {
+            tableView.setEditing(true, animated: true)
+            addBarButton.isEnabled = false
+            editButton.title = "Done"
+        }
+    }
+    
+    
 }
 
 // says how many rows we need for the screen
@@ -56,4 +72,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = toDoArray[indexPath.row]
         return cell
     }
-}
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            toDoArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let itemMoved = toDoArray[sourceIndexPath.row]
+        toDoArray.remove(at: sourceIndexPath.row)
+        toDoArray.insert(itemMoved, at: destinationIndexPath.row)
+    }
+    }
+
+

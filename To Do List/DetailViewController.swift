@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
         if let toDoItem = toDoItem {
             toDoField.text = toDoItem
         }
+        toDoField.becomeFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
