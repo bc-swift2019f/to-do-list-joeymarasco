@@ -83,6 +83,9 @@
                                 <rect key="frame" x="16" y="231" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="toDoFieldChanged:" destination="iff-Gq-orR" eventType="editingChanged" id="Rub-LE-Pgf"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,6 +112,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="saveBarButton" destination="h0A-dN-BQ0" id="aaE-yP-wSS"/>
                         <outlet property="toDoField" destination="dll-lI-Av4" id="xmb-Yv-vgC"/>
                     </connections>
                 </viewController>
